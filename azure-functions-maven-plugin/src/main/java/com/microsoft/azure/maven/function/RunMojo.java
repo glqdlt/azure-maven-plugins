@@ -89,7 +89,7 @@ public class RunMojo extends AbstractFunctionMojo {
     protected void checkRuntimeExistence(final CommandHandler handler) throws AzureExecutionException {
         handler.runCommandWithReturnCodeCheck(
                 getCheckRuntimeCommand(),
-                false, /* showStdout */
+                true, /* showStdout */
                 null, /* workingDirectory */
                 CommandUtils.getDefaultValidReturnCodes(),
                 RUNTIME_NOT_FOUND
@@ -106,6 +106,7 @@ public class RunMojo extends AbstractFunctionMojo {
                 RUN_FUNCTIONS_FAILURE
         );
     }
+
 
     private void checkRuntimeCompatibility(final CommandHandler handler) throws AzureExecutionException {
         // Maven will always refer JAVA_HOME, which is also adopted by function core tools
